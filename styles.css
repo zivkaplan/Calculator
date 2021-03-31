@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+    border-radius: 1em;
+}
+body{
+    background-color: #e9edc9;
+}
+.calc {
+    background-color: #faedcd;
+    max-width: min(70vw, 300px);
+    height: min(75vh, 500px);
+    margin: 2em auto;
+    padding: 10px;
+    border: solid 1px black;
+    display: grid;
+    /* grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr); */
+    grid-template-areas:
+    "screen screen screen screen"
+    "screen screen screen screen"
+    "clear clear backspace backspace"
+    " seven eight nine divide "
+    " four five six multiply "
+    " one two three substract"
+    "decimal zero result add" ;
+    gap: 10px;
+}
+
+.calc > * {
+    border: 1px solid black;
+    background-color: #fefae0;
+}
+
+.screen {grid-area: screen;}
+.clear {grid-area: clear;}
+.backspace {grid-area: backspace;}
+.zero {grid-area: zero;}
+.one {grid-area: one;}
+.two {grid-area: two;}
+.three {grid-area: three;}
+.four {grid-area: four;}
+.five {grid-area: five;}
+.six {grid-area: six}
+.seven {grid-area: seven;}
+.eight {grid-area: eight;}
+.nine {grid-area: nine;}
+.add {grid-area: add;}
+.substract {grid-area: substract;}
+.multiply {grid-area: multiply;}
+.divide {grid-area: divide;}
+.decimal {grid-area: decimal;}
+
+.btn:hover{
+    background-color: #faedcd;
+    cursor: pointer;
+}
