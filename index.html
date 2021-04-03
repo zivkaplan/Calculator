@@ -5,32 +5,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title>Calculator</title>
 </head>
 
 <body>
 
-    <div class="calc">
-        <div class="screen"></div>
-        <button class="btn clear">clear</button>
-        <button class="btn backspace">C</button>
-        <button value="0" class="zero">0</button>
-        <button value="1" class="btn one">1</button>
-        <button value="2" class="btn two">2</button>
-        <button value="3" class="btn three">3</button>
-        <button value="4" class="btn four">4</button>
-        <button value="5" class="btn five">5</button>
-        <button value="6" class="btn six">6</button>
-        <button value="7" class="btn seven">7</button>
-        <button value="8" class="btn eight">8</button>
-        <button value="9" class="btn nine">9</button>
-        <button value="+" class="btn add">+</button>
-        <button value="-" class="btn substract">-</button>
-        <button value="*" class="btn multiply">*</button>
-        <button value="-" class="btn divide">:</button>
-        <button value="=" class="btn result">=</button>
-        <button value="." class="btn decimal">.</button>
+    <div class="calculator">
+        <div class="screen">
+            <div class="previous"></div>
+            <div class="current"></div>
+        </div>
+        <button id="clear" class="btn clear" data-type="clear">Clear</button>
+        <button id="C" class="btn backspace" data-type="backspace">C</button>
+        <button id=" 0" class="btn num zero" data-type="number">0</button>
+        <button id="1" class="btn num one" data-type="number">1</button>
+        <button id="2" class="btn num two" data-type="number">2</button>
+        <button id="3" class="btn num three" data-type="number">3</button>
+        <button id="4" class="btn num four" data-type="number">4</button>
+        <button id="5" class="btn num five" data-type="number">5</button>
+        <button id="6" class="btn num six" data-type="number">6</button>
+        <button id="7" class="btn num seven" data-type="number">7</button>
+        <button id="8" class="btn num eight" data-type="number">8</button>
+        <button id="9" class="btn num nine" data-type="number">9</button>
+        <button id="+" class="btn add" data-type="operator">+</button>
+        <button id="-" class="btn substract" data-type="operator">-</button>
+        <button id="×" class="btn multiply" data-type="operator">×</button>
+        <button id="÷" class="btn divide" data-type="operator">÷</button>
+        <button id="=" class=" btn equals" data-type="equals">=</button>
+        <button id="." class="btn decimal" data-type="number">.</button>
 
     </div>
     <script src="app.js"></script>
