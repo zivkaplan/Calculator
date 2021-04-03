@@ -11,7 +11,7 @@ calculator.addEventListener('click', (event) => {
 
     if (type === 'number') {
         if (!calculator.dataset.operator) {
-            if (previousKeyType === 'equals') clear()
+            if (previousKeyType === 'equals') clear();
             if (!calculator.dataset.firstNumber) calculator.dataset.firstNumber = keyValue;
             else { calculator.dataset.firstNumber += keyValue }
         } else {
@@ -19,8 +19,13 @@ calculator.addEventListener('click', (event) => {
             else { calculator.dataset.secondNumber += keyValue }
         }
     }
-    if (type === 'operator' && (!calculator.dataset.secondNumber || calculator.dataset.secondNumber.length < 1)) {
-        calculator.dataset.operator = keyValue;
+    if (type === 'operator') {
+        if (!calculator.dataset.secondNumber || calculator.dataset.secondNumber.length < 1) {
+            calculator.dataset.operator = keyValue;
+        } else if (previousKeyType === "number") {
+            calculator.dataset.firstNumber = calculate();
+            calculator.dataset.operator = keyValue;
+        }
     }
 
     if (type === 'clear') {
@@ -37,13 +42,9 @@ calculator.addEventListener('click', (event) => {
         }
     }
 
-    if (type === 'equals') {
-        const { firstNumber, operator, secondNumber } = calculator.dataset;
-        clear();
-        result = operate(parseFloat(firstNumber), operator, parseFloat(secondNumber));
-        calculator.dataset.firstNumber = result;
-    }
+    if (type === 'equals') { calculator.dataset.firstNumber = calculate() }
     calculator.dataset.previousKeyType = type;
+
     if (!calculator.dataset.operator) currentScreen.innerText = calculator.dataset.firstNumber;
     else {
         previousScreen.innerText = calculator.dataset.firstNumber + " " + calculator.dataset.operator;
@@ -70,4 +71,11 @@ function clear() {
     calculator.dataset.operator = "";
     currentScreen.innerText = "";
     previousScreen.innerText = "";
+}
+
+function calculate() {
+    const { firstNumber, operator, secondNumber } = calculator.dataset;
+    clear();
+    return operate(parseFloat(firstNumber), operator, parseFloat(secondNumber));
+
 }
