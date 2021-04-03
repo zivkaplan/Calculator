@@ -31,13 +31,13 @@ body {
     margin: 2em auto;
     padding: 20px;
     display: grid;
-    grid-template-rows: minmax(100px,auto);
+    grid-template-rows: minmax(120px, auto);
     grid-template-areas:
     "screen screen screen screen"
     "clear clear backspace backspace"
-    " seven eight nine divide "
-    " four five six multiply "
-    " one two three substract"
+    "seven eight nine divide "
+    "four five six multiply "
+    "one two three substract"
     "decimal zero result add" ;
     gap: 10px;
 }
@@ -50,23 +50,22 @@ body {
 }
 
 .screen {
-    padding: 1em;
     padding-right: 20px;
     grid-area: screen;
     background-color: var(--screen-color);
-    display: flex;
-    flex-direction: column;
-    justify-content:space-between;
-    align-items: flex-end;
-    word-wrap: break-word;
-    word-break: break-all;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 40% 60%;
+    align-items: flex-end; 
 }
 .previous{
+    grid-area: 1 / -1 / 1 / span 1  ;
     font-size: 1.5em;
     font-weight: 300;
     color: rgb(121, 119, 119);
 }
 .current {
+    grid-area: -1 / -1 / 1 / span 1  ;
     font-size: 2em;
     font-weight: 500;
 }

@@ -10,20 +10,19 @@ calculator.addEventListener('click', (event) => {
     const { previousKeyType } = calculator.dataset;
 
     if (type === 'number') {
-        if (previousKeyType === 'operator') {
-            if (!calculator.dataset.secondNumber) calculator.dataset.secondNumber = keyValue;
-            else calculator.dataset.firstNumber += keyValue;
-        } else {
-            calculator.dataset.onFirstNumber = 'true';
+        if (!calculator.dataset.operator) {
+            if (previousKeyType === 'equals') clear()
             if (!calculator.dataset.firstNumber) calculator.dataset.firstNumber = keyValue;
-            else calculator.dataset.firstNumber += keyValue;
+            else { calculator.dataset.firstNumber += keyValue }
+        } else {
+            if (!calculator.dataset.secondNumber) calculator.dataset.secondNumber = keyValue;
+            else { calculator.dataset.secondNumber += keyValue }
         }
     }
-
-    if (type === 'operator') {
+    if (type === 'operator' && (!calculator.dataset.secondNumber || calculator.dataset.secondNumber.length < 1)) {
         calculator.dataset.operator = keyValue;
-        calculator.dataset.onFirstNumber = 'false';
     }
+
     if (type === 'clear') {
         clear();
     }
@@ -53,33 +52,16 @@ calculator.addEventListener('click', (event) => {
     }
 })
 
-const add = ((a, b) => {
-    return a + b
-})
-
-const subtract = ((a, b) => {
-    return a - b
-})
-
-
-const multiply = ((a, b) => {
-    return a * b
-})
-
-const divide = ((a, b) => {
-    return a / b
-})
-
 function operate(firstNumber, operator, secondNumber) {
     switch (operator) {
         case "+":
-            return add(firstNumber, secondNumber)
+            return (firstNumber + secondNumber)
         case "-":
-            return subtract(firstNumber, secondNumber)
+            return (firstNumber - secondNumber)
         case "×":
-            return multiply(firstNumber, secondNumber)
+            return (firstNumber * secondNumber)
         case "÷":
-            return divide(firstNumber, secondNumber)
+            return (firstNumber / secondNumber)
     }
 }
 function clear() {
@@ -88,5 +70,4 @@ function clear() {
     calculator.dataset.operator = "";
     currentScreen.innerText = "";
     previousScreen.innerText = "";
-    calculator.dataset.onFirstNumber = "true";
 }
