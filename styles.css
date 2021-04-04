@@ -41,7 +41,7 @@ body {
     grid-template-rows: minmax(120px, auto);
     grid-template-areas:
     "screen screen screen screen screen"
-    "clear clear backspace backspace backspace"
+    "clear clear clear backspace backspace"
     "seven eight nine divide equals"
     "four five six multiply equals"
     "one two three substract equals"
