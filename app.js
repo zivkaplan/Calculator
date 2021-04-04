@@ -23,26 +23,32 @@ const clearBtn = document.querySelector(".clear")
 
 window.addEventListener("keyup", (event) => {
     if (!event.shiftKey) {
-        if (event.keyCode === 48) zero.click()
-        if (event.keyCode === 49) one.click()
-        if (event.keyCode === 50) two.click()
-        if (event.keyCode === 51) three.click()
-        if (event.keyCode === 52) four.click()
-        if (event.keyCode === 53) five.click()
-        if (event.keyCode === 54) six.click()
-        if (event.keyCode === 55) seven.click()
-        if (event.keyCode === 56) eight.click()
-        if (event.keyCode === 57) nine.click()
-        if (event.keyCode === 61 || event.keyCode === 13) equalsBtn.click()
-        if (event.keyCode === 173) substractBtn.click()
-        if (event.keyCode === 220) divideBtn.click()
-        if (event.keyCode === 8) backspaceBtn.click()
+        if (event.keyCode === 48) btnClick(zero)
+        if (event.keyCode === 49) btnClick(one)
+        if (event.keyCode === 50) btnClick(two)
+        if (event.keyCode === 51) btnClick(three)
+        if (event.keyCode === 52) btnClick(four)
+        if (event.keyCode === 53) btnClick(five)
+        if (event.keyCode === 54) btnClick(six)
+        if (event.keyCode === 55) btnClick(seven)
+        if (event.keyCode === 56) btnClick(eight)
+        if (event.keyCode === 57) btnClick(nine)
+        if (event.keyCode === 61 || event.keyCode === 13) btnClick(equalsBtn)
+        if (event.keyCode === 173) btnClick(substractBtn)
+        if (event.keyCode === 220) btnClick(divideBtn)
+        if (event.keyCode === 8) btnClick(backspaceBtn)
     }
     else {
-        if (event.keyCode === 67) clearBtn.click()
-        if (event.keyCode === 61) addBtn.click()
-        if (event.keyCode === 56) multiplyBtn.click()
-        if (event.keyCode === 57) nine.click()
+        if (event.keyCode === 67) btnClick(clearBtn)
+        if (event.keyCode === 61) btnClick(addBtn)
+        if (event.keyCode === 56) btnClick(multiplyBtn)
+        if (event.keyCode === 57) btnClick(nine)
+    }
+
+    async function btnClick(btn) {
+        btn.classList.toggle("jsClick")
+        btn.click();
+        await setTimeout(() => btn.classList.toggle("jsClick"), 150)
     }
 })
 

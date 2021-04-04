@@ -90,15 +90,22 @@ body {
 
 .btn {
     background-color: var(--btn-color);
-    transition: transform 0.1s ease-out, font-weight 0.1s;
+    transition: transform 0.1s ease-out, font-weight 0.1s, background-color 0.1s;
 }
 
 .btn:hover{
     cursor: pointer;
     background-color: var(--btn-hover-color);
 }
+
 .btn:active{
+transform: scale(1.1);
+}
+
+.jsClick{
+    transition: all 0.1s;
     transform: scale(1.1);
+    background-color: var(--btn-hover-color);
 }
  
 .clear {grid-area: clear;}
@@ -142,4 +149,8 @@ footer{
     color: ivory;
     background-color: #4b4d4e;
     text-align: center;
+}
+
+footer span{
+    vertical-align: baseline;
 }
