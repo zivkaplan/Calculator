@@ -8,6 +8,7 @@ calculator.addEventListener('click', (event) => {
     const keyValue = event.target.id;
     const { type } = event.target.dataset;
     const { previousKeyType } = calculator.dataset;
+    const calcData = calculator.dataset;
 
     if (type === 'number') {
         if (!calculator.dataset.operator) {
@@ -33,16 +34,17 @@ calculator.addEventListener('click', (event) => {
     }
 
     if (type === 'backspace') {
-        if (!previousKeyType === 'operator') {
-            if (calculator.dataset.onFirstNumber) {
-                calculator.dataset.firstNumber = calculator.dataset.firstNumber.slice(0, -1);
-            } else {
-                calculator.dataset.secondNumber = calculator.dataset.secondNumber.slice(0, -1);
-            }
+        if (calculator.dataset.firstNumber) {
+            if (calculator.dataset.operator) calculator.dataset.secondNumber = calculator.dataset.secondNumber.slice(0, -1);
+            else { calculator.dataset.firstNumber = calculator.dataset.firstNumber.slice(0, -1); }
         }
     }
 
-    if (type === 'equals') { calculator.dataset.firstNumber = calculate() }
+    if (type === 'equals') {
+        if (!calculator.dataset.secondNumber) return
+        else { calculator.dataset.firstNumber = calculate() }
+    }
+
     calculator.dataset.previousKeyType = type;
 
     if (!calculator.dataset.operator) currentScreen.innerText = calculator.dataset.firstNumber;

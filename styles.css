@@ -1,8 +1,11 @@
 :root {
-    --bg-color: radial-gradient(#734b6d, #42275a );
-    --calc-color: lightgray;
-    --btn-color: rgb(215, 243, 240);
-    --screen-color: white;
+    --bg-color:  #8ecae6;
+    --calc-color: #fffcf2;
+    --btn-color: #fffcf2;
+    --btn-hover-color: #d8d0c3;
+    --screen-bg-color: #000814;
+    --previous-screen-text-color: #d9dad6;
+    --current-screen-text-color: #ffff3f
 }
 
 *, *::before, *::after {
@@ -22,54 +25,80 @@ body {
     background: var(--bg-color);
 }
 
-.calculator {
+.container{
     border-radius: 1em;
-    box-shadow: 0px 0px 15px 0px gray;
-    background-color: var(--calc-color);
+    overflow: hidden;
     max-width: min(85vw, 350px);
-    height: min(75vh, 500px);
     margin: 2em auto;
-    padding: 20px;
+    box-shadow: 0px 0px 50px -5px #000000aa;
+}
+
+.calculator {
+    max-width: 100%;
+    background-color: var(--calc-color);
+    height: min(75vh, 500px);
     display: grid;
     grid-template-rows: minmax(120px, auto);
     grid-template-areas:
-    "screen screen screen screen"
-    "clear clear backspace backspace"
-    "seven eight nine divide "
-    "four five six multiply "
-    "one two three substract"
-    "decimal zero result add" ;
-    gap: 10px;
+    "screen screen screen screen screen"
+    "clear clear backspace backspace backspace"
+    "seven eight nine divide equals"
+    "four five six multiply equals"
+    "one two three substract equals"
+    "decimal zero zero add equals" ;
 }
 
 .calculator > * {
-    border-radius: 2em;
     background-color: var(--calc-color);
     font-weight: 400;
     font-size: medium;
+    border:none;
 }
 
 .screen {
+    padding-top: min(10px, 1em);
     padding-right: 20px;
     grid-area: screen;
-    background-color: var(--screen-color);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 40% 60%;
-    align-items: flex-end; 
-}
-.previous{
-    grid-area: 1 / -1 / 1 / span 1  ;
-    font-size: 1.5em;
-    font-weight: 300;
-    color: rgb(121, 119, 119);
-}
-.current {
-    grid-area: -1 / -1 / 1 / span 1  ;
-    font-size: 2em;
-    font-weight: 500;
+    background-color: var(--screen-bg-color);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    justify-content: space-between;
+    align-items: stretch;
+    max-width: 100%;
 }
 
+.spacer {
+    flex-grow: 2;
+    flex-shrink: 2 ;
+}
+.previous{
+    text-align: end;
+    font-size: 1.5em;
+    font-weight: 300;
+    color: var(--previous-screen-text-color);
+}
+.current {
+    justify-self: flex-end;
+    text-align: end;
+    font-size: 2em;
+    font-weight: 500;
+    color: var(--current-screen-text-color);
+}
+
+.btn {
+    background-color: var(--btn-color);
+    transition: transform 0.12s ease-out, font-weight 0.1s;
+}
+
+.btn:hover{
+    cursor: pointer;
+    background-color: var(--btn-hover-color);
+}
+
+ 
 .clear {grid-area: clear;}
 .backspace {grid-area: backspace;}
 .zero {grid-area: zero;}
@@ -87,20 +116,11 @@ body {
 .multiply {grid-area: multiply;}
 .divide {grid-area: divide;}
 .decimal {grid-area: decimal;}
-
-
-.btn {
-    background-color: var(--btn-color);
-    transition: transform 0.12s ease-out, font-weight 0.1s;
+.equals {
+    grid-area: equals;
+    background-color: #eb5e28;
 }
 
-.btn:hover{
-    box-shadow: -1px 1px 2px 1px gray;
-    cursor: pointer;
-    transform: translate(1%, -1%);
+.equals:hover {
+    background-color: #da501a;
 }
-
-.btn:active{
-    transform: translate(0);
-}
-
