@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>Calculator</title>
 </head>
@@ -19,9 +19,9 @@
                 <div class="spacer"></div>
                 <div class="current">0</div>
             </div>
-            <button id="clear" class="btn clear" data-type="clear">Clear</button>
+            <button id="clear" class="btn clear" data-type="clear">Clear<span> &nbsp;(shift+c)</span></button>
             <button id="C" class="btn backspace" data-type="backspace">&#9003;</button>
-            <button id=" 0" class="btn num zero" data-type="number">0</button>
+            <button id="0" class="btn num zero" data-type="number">0</button>
             <button id="1" class="btn num one" data-type="number">1</button>
             <button id="2" class="btn num two" data-type="number">2</button>
             <button id="3" class="btn num three" data-type="number">3</button>
@@ -39,6 +39,7 @@
             <button id="." class="btn decimal" data-type="number">.</button>
         </div>
     </div>
+    <footer>&#8471; Ziv Kaplan 2021</footer>
     <script src="app.js"></script>
 </body>
 

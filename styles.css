@@ -29,7 +29,7 @@ body {
     border-radius: 1em;
     overflow: hidden;
     max-width: min(85vw, 350px);
-    margin: 2em auto;
+    margin: 3em auto;
     box-shadow: 0px 0px 50px -5px #000000aa;
 }
 
@@ -90,14 +90,16 @@ body {
 
 .btn {
     background-color: var(--btn-color);
-    transition: transform 0.12s ease-out, font-weight 0.1s;
+    transition: transform 0.1s ease-out, font-weight 0.1s;
 }
 
 .btn:hover{
     cursor: pointer;
     background-color: var(--btn-hover-color);
 }
-
+.btn:active{
+    transform: scale(1.1);
+}
  
 .clear {grid-area: clear;}
 .backspace {grid-area: backspace;}
@@ -123,4 +125,21 @@ body {
 
 .equals:hover {
     background-color: #da501a;
+}
+
+.clear span{
+    text-align:left;
+    color: gray;
+    font-weight: 200;
+    font-size: 14px;
+}
+
+footer{
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: ivory;
+    background-color: #4b4d4e;
+    text-align: center;
 }

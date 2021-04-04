@@ -1,6 +1,50 @@
 const calculator = document.querySelector(".calculator")
 const previousScreen = calculator.querySelector(".previous")
 const currentScreen = calculator.querySelector(".current")
+const one = document.querySelector(".one")
+const two = document.querySelector(".two")
+const three = document.querySelector(".three")
+const four = document.querySelector(".four")
+const five = document.querySelector(".five")
+const six = document.querySelector(".six")
+const seven = document.querySelector(".seven")
+const eight = document.querySelector(".eight")
+const nine = document.querySelector(".nine")
+const zero = document.querySelector(".zero")
+const addBtn = document.querySelector(".add")
+const substractBtn = document.querySelector(".substract")
+const multiplyBtn = document.querySelector(".multiply")
+const divideBtn = document.querySelector(".divide")
+const equalsBtn = document.querySelector(".equals")
+const backspaceBtn = document.querySelector(".backspace")
+const clearBtn = document.querySelector(".clear")
+
+
+
+window.addEventListener("keyup", (event) => {
+    if (!event.shiftKey) {
+        if (event.keyCode === 48) zero.click()
+        if (event.keyCode === 49) one.click()
+        if (event.keyCode === 50) two.click()
+        if (event.keyCode === 51) three.click()
+        if (event.keyCode === 52) four.click()
+        if (event.keyCode === 53) five.click()
+        if (event.keyCode === 54) six.click()
+        if (event.keyCode === 55) seven.click()
+        if (event.keyCode === 56) eight.click()
+        if (event.keyCode === 57) nine.click()
+        if (event.keyCode === 61 || event.keyCode === 13) equalsBtn.click()
+        if (event.keyCode === 173) substractBtn.click()
+        if (event.keyCode === 220) divideBtn.click()
+        if (event.keyCode === 8) backspaceBtn.click()
+    }
+    else {
+        if (event.keyCode === 67) clearBtn.click()
+        if (event.keyCode === 61) addBtn.click()
+        if (event.keyCode === 56) multiplyBtn.click()
+        if (event.keyCode === 57) nine.click()
+    }
+})
 
 calculator.addEventListener('click', (event) => {
     if (!event.target.closest('button')) return
@@ -8,7 +52,6 @@ calculator.addEventListener('click', (event) => {
     const keyValue = event.target.id;
     const { type } = event.target.dataset;
     const { previousKeyType } = calculator.dataset;
-    const calcData = calculator.dataset;
 
     if (type === 'number') {
         if (!calculator.dataset.operator) {
@@ -21,6 +64,7 @@ calculator.addEventListener('click', (event) => {
         }
     }
     if (type === 'operator') {
+        if (!calculator.dataset.firstNumber) return;
         if (!calculator.dataset.secondNumber || calculator.dataset.secondNumber.length < 1) {
             calculator.dataset.operator = keyValue;
         } else if (previousKeyType === "number") {
@@ -34,8 +78,11 @@ calculator.addEventListener('click', (event) => {
     }
 
     if (type === 'backspace') {
-        if (calculator.dataset.firstNumber) {
-            if (calculator.dataset.operator) calculator.dataset.secondNumber = calculator.dataset.secondNumber.slice(0, -1);
+        if (!calculator.dataset.firstNumber) return
+        else {
+            if (calculator.dataset.operator) {
+                if (calculator.dataset.secondNumber) calculator.dataset.secondNumber = calculator.dataset.secondNumber.slice(0, -1);
+            }
             else { calculator.dataset.firstNumber = calculator.dataset.firstNumber.slice(0, -1); }
         }
     }
