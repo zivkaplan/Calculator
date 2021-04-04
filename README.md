@@ -1,8 +1,6 @@
 # Calculator
 
-An exercise from the [the Odin Project](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/calculator). 
-
-using HTML, CSS, JS. 
+An exercise from the [the Odin Project](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/calculator) using HTML, CSS and Vanilla JS. 
 
 View here: https://zivkaplan.github.io/Calculator/
 
